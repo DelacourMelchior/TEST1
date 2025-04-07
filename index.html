@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Noir Animé</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .animate-pulse-once {
+            animation: pulse 0.5s ease-out;
+        }
+        
+        .sun {
+            filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.7));
+        }
+        
+        .sun-ray {
+            position: absolute;
+            background: #FFD700;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="bg-white h-screen w-full overflow-hidden relative">
+    <!-- Soleil en haut à droite -->
+    <div class="sun absolute top-8 right-8">
+        <div class="w-16 h-16 bg-yellow-300 rounded-full relative">
+            <!-- Rayons du soleil -->
+            <div class="sun-ray w-4 h-16 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="sun-ray w-4 h-16 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform rotate-45"></div>
+            <div class="sun-ray w-4 h-16 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform rotate-90"></div>
+            <div class="sun-ray w-4 h-16 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform rotate-[135deg]"></div>
+        </div>
+    </div>
+
+    <!-- Point noir central cliquable -->
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div 
+            id="blackDot"
+            class="w-20 h-20 bg-black rounded-full cursor-pointer hover:opacity-90 transition-opacity"
+            onclick="animateDot()"
+        ></div>
+    </div>
+
+    <script>
+        function animateDot() {
+            const dot = document.getElementById('blackDot');
+            dot.classList.add('animate-pulse-once');
+            
+            // Retirer la classe après l'animation pour pouvoir la réappliquer
+            setTimeout(() => {
+                dot.classList.remove('animate-pulse-once');
+            }, 500);
+        }
+    </script>
+</body>
+</html>
