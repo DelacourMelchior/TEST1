@@ -49,12 +49,22 @@
         ></div>
     </div>
 
+    <!-- Bouton YouTube -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <a 
+            href="https://www.youtube.com" 
+            target="_blank"
+            class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition"
+        >
+            Aller sur YouTube
+        </a>
+    </div>
+
     <script>
         function animateDot() {
             const dot = document.getElementById('blackDot');
             dot.classList.add('animate-pulse-once');
             
-            // Retirer la classe après l'animation pour pouvoir la réappliquer
             setTimeout(() => {
                 dot.classList.remove('animate-pulse-once');
             }, 500);
@@ -62,3 +72,4 @@
     </script>
 </body>
 </html>
+
